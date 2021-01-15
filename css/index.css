@@ -1,0 +1,38 @@
+.container-md{
+    margin: auto;
+    width:1226px;
+}
+
+.adv-topbar{
+    position: relative;
+    width: 100%;
+    height: 120px;
+}
+
+.adv-topbar a{
+   position: absolute;
+   top:0;
+   width:100%;
+   height: 120px;
+   background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/bb3c06a430689ba2357dd7d1fbfa6bab.jpg?w=5120&amp;h=240);
+   background-repeat: no-repeat;
+   background-position: 50%;
+   background-size:cover;
+}
+.site-topbar{
+    position: relative;
+    background-color: #333;
+    color: #b0b0b0;
+}
+.topbar-nav{
+    line-height: 40px;
+}
+.topbar-nav a{
+     color: #b0b0b0;
+     display:inline-block;
+     font-size: 12px;
+}
+.topbar-nav span{
+    margin: 0, .3em;
+    color: #424242;
+}
