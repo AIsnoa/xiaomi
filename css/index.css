@@ -1,6 +1,7 @@
 .container-md{
     margin: auto ;
     width:1226px;
+    overflow: hidden;
 }
 
 .adv-topbar{
@@ -26,6 +27,7 @@
     width: 100%;
     height: 40px;
 }
+
 .topbar-nav{
     float: left;
     height: 40px;
@@ -96,15 +98,12 @@
     overflow: hidden;
     background-color: #ff6700;
 }
-.logo :before{
-    position: absolute;
-    top:0;
-    left:0;
+.header-logo :before{
     content: "";
-    z-index: 1;
+    display: block;
     width: 55px;
     height: 55px;
-    background-image: url(/images/mi-logo.png);
+    background-image: url(../images/mi-logo.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     opacity: 1;
@@ -176,13 +175,18 @@
     background: #fff;
 }
 .site-footer{
-    float: left;
+    position: relative;
 }
 .footer-service{
     padding:27px 0;
     border-bottom: 1px solid #e0e0e0;
 }
 
+.footer-service ul:after{
+    content: "";
+    display: block;
+    clear: both;
+}
 .list-service li {
     float: left;
     width:19.8%;
@@ -192,6 +196,82 @@
     text-align: center;
     border-left: 1px solid #e0e0e0;
 }
-.list-service li:first-child {
+.list-service li:first-child{
     border-left: 0;
+}
+.list-service li a{
+    color:#616161;
+}
+
+.footer-links{
+    padding: 40px 0;
+}
+
+.col-links{
+    float:left;
+    width: 160px;
+    margin:0;
+}
+
+.col-links dt{
+    margin: -1px 0 26px;
+    font-size:14px;
+    line-height: 1.25;
+    columns: #424242;
+}
+.col-links dd{
+    margin:10px 0 0;
+    font-size:12px;
+}
+.col-links dd a{
+    color: #757575;
+}
+
+.clearfix :before{
+    content: "";
+    display: table;
+}
+.col-contact .phone{
+    font-size:22px;
+    color: #ff6700;
+    line-height: 1;
+}
+
+.col-contact p{
+    margin: 0 0 5px 0;
+    font-size: 12px;
+}
+
+img{
+    display: none;
+}
+
+.site-info{
+    position: relative;
+    padding: 30px 0;
+    font-size:12px;
+    background-color: #fafafa;
+}
+.footer-logo :before{
+    content: "";
+    display: block;
+    width: 55px;
+    height: 55px;
+    background-image: url(../images/mi-logo.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    opacity: 1;
+}
+.slogan{
+    clear:both;
+    margin: 30px auto 0;
+    width:100%;
+    height: 19px;
+    background: url(../images/slogan2020.png) no-repeat center 0;
+}
+.ir{
+    display:block;
+    text-align: left;
+    text-indent: -9999em;
+    overflow:hidden;
 }
