@@ -349,7 +349,7 @@ img{
 .tool-bar-item:hover .hover{
     display:block;
 }
-.tool-bar-item:hover span{
+.tool-bar-item:hover>span{
     color:#ff6700
 }
 .tool-bar-item img{
@@ -366,7 +366,11 @@ img{
     font-size: 14px;
     color: #b0b0b0;
 }
-
+.tool-bar a:first-child:hover 
+.pop-content,
+.pop-content::before{
+    visibility: visible;
+}
 .pop-content{
     position: absolute;
     left:0;
@@ -375,9 +379,18 @@ img{
     border: 1 solid #f5f5f5;
     background-color: #fff;
     transform: translate3d(-110%,0,0);
-    visibility: visible;
+    visibility: hidden;
 }
-
+.pop-content ::before{
+    content: " ";
+    position: absolute;
+    border-width: 6px ;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+    right: -12px;
+    top:21%;
+    visibility: hidden;
+}
 .pop-content img{
     width: 100px;
     height: 100px;
