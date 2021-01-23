@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css">
+      <link rel="stylesheet" href="images/font_s04shzv2w9/iconfont.css">
     <title>小米商城</title>
 </head>
 <body>
@@ -126,12 +128,14 @@
                     </div>
                     <div class="header-search">
                         <form class="search-form">
-                            <input class="search-text" type="search" placeholder="  电视"><input class="search-btn" type="submit">
+                            <input class="search-text" type="search" placeholder="  电视">
+                            <input class="search-btn iconfont" value="&#xe618" type="submit">
                         </form>
                     </div>
                 </div>
             </div>
       </div>
+
       <div style="margin-top: 20%;">
           <div class="site-footer">
             <div class="container-md">
@@ -309,5 +313,29 @@
                 <span>回顶部</span>
             </a>
       </div>
+
+      <script src="node_modules/swiper/swiper-bundle.min.js"></script>
+      <script>        
+        var mySwiper = new Swiper ('.swiper-container', {
+          direction: 'vertical', // 垂直切换选项
+          loop: true, // 循环模式选项
+          
+          // 如果需要分页器
+          pagination: {
+            el: '.swiper-pagination',
+          },
+          
+          // 如果需要前进后退按钮
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          
+          // 如果需要滚动条
+          scrollbar: {
+            el: '.swiper-scrollbar',
+          },
+        })        
+        </script>
 </body>
 </html>
