@@ -242,10 +242,18 @@
     color:#616161;
     cursor: pointer;
 }
+.list-service li a svg{
+    width:24px;
+    height: 24px;
+    vertical-align: -5px;
+    fill:#b0b0b0;
+}
 .list-service li a:hover{
     color:#ff6700;
 }
-
+.list-service li a:hover svg{
+    fill:#ff6700;
+}
 .footer-links{
     padding: 40px 0;
     overflow: hidden;
@@ -352,12 +360,24 @@ img{
 .tool-bar-item:hover>span{
     color:#ff6700
 }
+.tool-bar-item:hover svg{
+    fill:#ff6700;
+}
+
 .tool-bar-item img{
     display: block;
     margin:0 auto 8px;
     height: 30px;
     width: 30px;
     padding-top: 18px;
+}
+.tool-bar-item svg{
+    display: block;
+    margin:0 auto 8px;
+    height: 30px;
+    width: 30px;
+    padding-top: 18px;
+    fill: #b0b0b0;
 }
 .tool-bar-item .hover{
         display: none;
@@ -403,4 +423,61 @@ img{
     text-align: center;
     color: #757575;
     margin:14px auto 0;
+}
+.col-contact{
+    float: right;
+    width: 251px;
+    border-left: 1px solid #e0e0e0;
+    text-align: center;
+    color:#616161;
+}
+.col-contact .btn-small{
+    display:flex;
+    align-items: center;
+    margin:0 auto;
+    width:118px;
+    height: 28px;
+    background: #fff;
+    border: 1px solid #ff6700;
+    cursor: pointer;
+}
+.col-contact .btn-small:hover{
+    background: #ff6700;
+}
+.col-contact .btn-small:hover a{
+    color:#fff;
+}
+.col-contact .btn-small:hover a svg{
+    fill:#fff;
+}
+.col-contact .btn-small a{
+    margin: 0 auto;
+    color: #ff6700;
+    font-size:12px;
+}
+.col-contact .btn-small a svg{
+    display:inline-block;
+    width: 12px;
+    height: 12px;
+    line-height: 16px;
+    fill:#ff6700;
+}
+.follow {
+    position: relative;
+    margin-top:10px;
+
+    
+}
+.follow a{
+    display: inline-block;
+    margin-left:6px;
+    vertical-align: middle;
+}
+.follow a:hover svg{
+   fill:#ff6700;
+}
+.follow a svg{
+    width:24px;
+    height: 24px;
+    fill:#616161;
 }
