@@ -127,6 +127,7 @@
     float: left;
     width:850px;
 }
+
 .site-header .nav-list{
     float:left;
     width:1100px;
@@ -151,6 +152,7 @@
     color: #ff6700;
 }
 .nav-category{
+    position: relative;
     float: left;
     width:127px;
     padding-right:15px;
@@ -162,7 +164,17 @@
     color:#333;
     visibility: hidden;
 }
-
+.site-category{
+    position: absolute;
+    display: block;
+    top:0;
+    left:0;
+    width: 234px;
+    height: 460px;
+    font-size:14px;
+    background: rgba(105,101,101,.6);
+    z-index: 999;
+}
 .header-search{
     margin-top:25px;
     float: right;
@@ -349,6 +361,7 @@ img{
     border: 1px solid #f5f5f5;
     background-color: #fff;
     text-align: center;
+    cursor: auto;
 }
 
 .tool-bar-item:hover .static{
