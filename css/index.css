@@ -1,7 +1,6 @@
 .container-md{
     margin: auto ;
     width:1226px;
-    overflow: hidden;
 }
 
 .adv-topbar{
@@ -28,7 +27,13 @@
     width: 100%;
     height: 40px;
 }
-
+.site-topbar> ::before,.site-topbar> ::after{
+    content: "";
+    display: table;
+}
+.site-topbar> ::after{
+    clear: both;
+}
 .topbar-nav{
     float: left;
     height: 40px;
@@ -128,6 +133,13 @@
     width:850px;
 }
 
+.site-header ::before,.site-header ::after{
+    content: " ";
+    display: table;
+}
+.site-header ::after{
+    clear: both;
+}
 .site-header .nav-list{
     float:left;
     width:1100px;
@@ -148,7 +160,6 @@
     cursor: pointer;
 }
 .site-header .nav-item .link :hover{
-    
     color: #ff6700;
 }
 .nav-category{
@@ -167,13 +178,38 @@
 .site-category{
     position: absolute;
     display: block;
-    top:0;
-    left:0;
+    top:88px;
+    left:-92px;
     width: 234px;
     height: 460px;
     font-size:14px;
     background: rgba(105,101,101,.6);
     z-index: 999;
+}
+
+.site-category-list{
+    padding:20px 0;
+}
+
+
+.site-category-list li a{
+    position: relative;
+    display: block;
+    padding-left:30px;
+    height: 42px;
+    line-height: 42px;
+    color:#fff;
+}
+.site-category-list li a:hover{
+    background-color: #ff6700;
+}
+.site-category-list li a svg{
+    position: absolute;
+    width:16px;
+    height: 16px;
+    top:12px;
+    right:20px;
+    fill:#fff;
 }
 .header-search{
     margin-top:25px;
