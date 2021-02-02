@@ -133,11 +133,11 @@
     width:850px;
 }
 
-.site-header ::before,.site-header ::after{
+.site-header> ::before,.site-header> ::after{
     content: " ";
     display: table;
 }
-.site-header ::after{
+.site-header> ::after{
     clear: both;
 }
 .site-header .nav-list{
@@ -192,7 +192,7 @@
 }
 
 
-.site-category-list li a{
+.site-category-list>li>a{
     position: relative;
     display: block;
     padding-left:30px;
@@ -200,8 +200,12 @@
     line-height: 42px;
     color:#fff;
 }
-.site-category-list li a:hover{
+.site-category-list> li:hover> a{
     background-color: #ff6700;
+}
+
+.site-category-list> li:hover .children{
+    display: block;
 }
 .site-category-list li a svg{
     position: absolute;
@@ -210,6 +214,54 @@
     top:12px;
     right:20px;
     fill:#fff;
+}
+
+.site-category-list li .children{
+    display: none;
+    position: absolute;
+    top: 0;
+    left:234px;
+    height: 485px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,.18);
+}
+.children-col-4{
+    width: 992px;
+}
+.children-list{
+    float: left;
+    height: 485px;
+    width: 248px;
+}
+.children-list li{
+    height: 76px;
+}
+
+.children-list li a{
+    display: block;
+    padding: 18px 20px;
+    color:#333;
+    transition: color .3s;   
+}
+
+.children-list li:hover a{
+    color:#ff6700;
+}
+
+.children-list li a img{
+    display: inline-block;
+    width:40px;
+    height: 40px;
+    margin-right: 12px;
+  vertical-align: -10px;
+}
+.children-list li a span{
+    display: inline-block;
+    width:156px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .header-search{
     margin-top:25px;
