@@ -313,6 +313,38 @@
     background: #ff6700;
     color:#fff;
 }
+/*  home-hero */
+.home-hero{
+    position: relative;
+    z-index: 1;
+}
+
+.swiper{
+    position: relative;
+    height: 460px;
+    overflow: hidden;
+}
+.wapper{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 460px;
+    width: 6130px;
+    /* background-color: #ff6700; */
+    transition: left .3s linear;
+}
+.wapper img{
+    display: block;
+    height: 460px;
+    width: 1226px;
+    float: left;
+    margin:0;
+}
+
+.home-hero-sub{
+    margin-top: 14px;
+}
+
 .site-footer{
     position: relative;
 }
