@@ -7,8 +7,8 @@ var left = document.querySelector('.swiper-button-left')
 var right = document.querySelector('.swiper-button-right')
 var timer,
         step = 0;
-
-        left.onclick = function(){
+    console.log(debounce)
+        left.onclick = throttle(()=>{
             step--
             if(step<0){
                 step = 4
@@ -26,7 +26,7 @@ var timer,
                 paginlist[step +1].className = ""
                 paginlist[step].className = "active"
             }
-        }
+        },1000)
 
         right.onclick = function(){
             step++
