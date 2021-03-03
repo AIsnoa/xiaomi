@@ -51,3 +51,108 @@ function throttle(callback,time){
         return 
     }
 }
+
+// 链式调用
+function lazyMan(name){
+    if(!(this instanceof lazyMan)){
+        return new lazyMan(name)
+    }
+    this.name = name
+    this.queue = []
+    this.default = function(){
+        this.queue.push(()=>{
+            console.log('Hi, my name is '+ name)
+            this.next()
+        })    
+    }
+    this.next = function(){
+        let callback = this.queue.shift()
+        callback && callback()
+    }
+    this.sleep = function(time){
+        this.queue.push(()=>{
+            let timer = setTimeout(()=>{
+                console.log('after' + time +'s ...')
+                this.next()
+            },time*1000)
+          
+        })
+        return this
+    }
+    this.eat = function(){
+        this.queue.push(()=>{
+            console.log('eat dinner')
+            this.next()
+        })
+        return this
+    }
+    this.default()    
+    setTimeout(() => {
+            this.next()
+    }, 0);
+}
+//自己实现 instanceof
+function instance(A,B){
+    if(typeof B !=='function'){
+        throw new Error('secound params must be a callable')
+    }
+    let O = B.prototype
+   A =  A.__proto__
+    while(1){
+        if (A == O){
+            return true
+        }
+        if(A == null){
+            return false
+        }
+        A = A.__proto__
+    }
+}
+
+//对象深拷贝
+
+var obj = {
+    a: 'aaa',
+    b: {
+        c: 'ccc'
+    },
+    d: [1,2,'aaa'],
+    
+}
+obj.obj = obj
+
+function deepclone(target,treated){
+   var result ;
+   var treated = treated
+   if(!Array.isArray(treated)) treated = []
+   if(treated.indexOf(target)>-1){
+       return target
+   }
+   treated.push(target)
+   if(target.constructor === Array){
+       result = []
+       target.forEach(element => {
+           if(typeof element === 'object'){
+               let temp = deepclone(element,treated)              
+               result.push(temp)
+           }else {
+               result.push(element)
+           }
+       });
+       return result
+  }else if(target.constructor === Object){
+       result = {}
+       for(i in target){
+           if(typeof target[i] === 'object'){
+              
+               result[i] = deepclone(target[i],treated)
+           }else {
+               result[i] = target[i]
+           }
+       }
+       return result
+  }else{
+       return target
+  }
+}
+
