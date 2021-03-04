@@ -156,3 +156,136 @@ function deepclone(target,treated){
   }
 }
 
+//自己实现promise
+function myPromise(exector){
+    let self = this
+    if(!(this instanceof myPromise)) throw new Error('must New myPromise')
+    if(typeof exector !== 'function') throw new Error('exector must be calable')
+    this.state = "Pending"
+    this.result
+    this.onFulfilledcallbacks = []
+    this.onRejectedcallbacks = []
+    let change = function(state,result){
+        if(self.state !== 'Pending') return
+        self.state = state
+        self.result = result
+
+        let callbacks = state === 'fulfilled'? self.onFulfilledcallbacks :self.onRejectedcallbacks
+        if(callbacks.length>0){
+            setTimeout(()=>{
+                callbacks.forEach((item,index)=>{
+                    if(typeof item ==='function'){
+                        item(result)
+                    }
+                })
+            },0)
+        }
+    }
+
+    try{
+        exector(function reslove(result){
+            change('fulfilled',result)
+        },function reject(reason){
+            change('rejected',reason)
+        })
+    }catch(err){
+        change('rejected',err)
+    }
+    
+}
+myPromise.all = function all(promises){
+    let reslult = []
+    let n = 0
+    if(!Array.isArray(promises)) throw new Errow('not array')
+    let arr = promises.map(function(p){
+        if(!(p instanceof myPromise)){
+            return  new myPromise.reslove(p)
+        }
+        return p
+    })
+    let newPromise = new myPromise(function(reslove,reject){
+            arr.forEach((item,index)=>{
+                item.then((value)=>{
+                    reslult[index] = value
+                    n++
+                    if(n == arr.length) reslove(reslult)
+                }).catch((reason)=>{
+                    reject(reason)
+                })
+            })
+    })
+    return newPromise
+}
+myPromise.reslove = function reslove(reslult){
+    return new myPromise((reslove)=>{
+        reslove('OK')
+    })
+} 
+myPromise.reject = function reject(reason){
+    return new myPromise((reslove,rejcet)=>{
+        rejcet(reason)
+    })
+}
+myPromise.prototype ={
+    constructor: myPromise,
+    then: function(onFulfilled,onRejected){
+        let self = this
+        let res
+        let newPromise = new myPromise((onReslove,onReject)=>{
+            switch(self.state){
+                case 'fulfilled':
+                   
+                    setTimeout(() => {
+                        try {
+                            res = onFulfilled(self.result)
+                            onReslove(res)
+                        } catch (error) {
+                            onReject(errpr)
+                        }
+                    }, 0);
+                    break
+                case 'rejected':
+                    setTimeout(()=>{
+                        try {
+                            res = onRejected(self.result)
+                            onReject(res)
+                        } catch (error) {
+                            onReject(error)
+                        }
+                    },0)
+                    break
+                default:
+                    self.onFulfilledcallbacks.push(function(){
+                        try {
+                            let res = onFulfilled(self.result)
+                            onReslove(res)
+                        } catch (error) {
+                            onReject(error)
+                        }
+                    })
+                    self.onRejectedcallbacks.push(function(){
+                        try {
+                            let res = onRejected(self.result)
+                            onReject(res)
+                        } catch (error) {
+                            onReject(error)
+                        }
+                     })
+            }
+        })
+        return newPromise
+        
+    },
+    catch: function(onReject){
+        this.then(null,onReject)
+    }
+}
+myPromise.prototype[Symbol.toStringTag] = "myPromise"
+
+var myp = new myPromise(function(reslove,reject){
+    reslove('OK')
+})
+myp2 = myp.then(function(reslult){
+    return reslult
+})
+console.log(myp2)
